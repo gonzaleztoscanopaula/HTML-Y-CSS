@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña - Sosneado</title>
+    <link rel="stylesheet" href="Inicio_de_sesion.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-container">
+            <img src="Logo/logososneado.png" alt="Logo Sosneado" class="logo">
+        </div>
+        <h1>RECUPERAR CONTRASEÑA</h1>
+        <p>Ingresa tu correo electrónico para recuperar tu contraseña</p>
+        <form id="recovery-form" class="login-form" method="post">
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" placeholder="Email..." required>
+            
+            <button type="submit">ENVIAR INSTRUCCIONES</button>
+        </form>
+        <p class="account-link">
+            <a href="Iniciar_con_cuenta.html">Volver a iniciar sesión</a>
+        </p>
+    </div>
+    <script>
+        document.getElementById('recovery-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe de la manera tradicional
+    
+            // Obtener el email del formulario
+            const email = document.getElementById('email').value;
+    
+            // Enviar solicitud POST al backend
+            try {
+                const response = await fetch('http://localhost:3000/users/recover-password', {  // Ajusta la URL aquí
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email }),
+                });
+    
+                const result = await response.json();
+                if (response.ok) {
+                    alert('Se han enviado las instrucciones a tu correo electrónico.');
+                } else {
+                    alert(result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Hubo un error al intentar recuperar la contraseña.');
+            }
+        });
+    </script>    
+</body>
+</html>
