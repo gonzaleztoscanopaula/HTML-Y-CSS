@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión - Sosneado</title>
+    <link rel="stylesheet" href="Inicio_de_sesion.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo-container">
+            <img src="Logo/logososneado.png" alt="Logo Sosneado" class="logo">
+        </div>
+        <h1>CREAR CUENTA</h1>
+        <p>Ingresa tu email y contraseña para crear una cuenta</p>
+        <form id="register-form" class="login-form" method="post">
+            <label for="email">Correo Electrónico:</label>
+            <input type="email" id="email" name="email" placeholder="Email..." required>
+            
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" placeholder="Password..." minlength="8" required>
+            
+            <label for="confirm-password">Confirmar Contraseña:</label>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Password..." minlength="8" required>
+            
+            <button type="submit">CREAR</button>
+        </form>
+        <p class="account-link">
+            ¿Ya tienes una cuenta? <a href="Iniciar_con_cuenta.html">Iniciar sesión</a>
+        </p>
+        <p class="terms">
+            By clicking continue, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+        </p>
+    </div>
+
+    <!-- JavaScript para validar que las contraseñas coincidan -->
+    <script>
+        document.getElementById('register-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe de la manera tradicional
+    
+            // Obtener datos del formulario
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+    
+            // Validar que las contraseñas coincidan
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden.');
+                return;
+            }
+    
+            // Enviar solicitud POST al backend
+            try {
+                const response = await fetch('http://localhost:3000/users/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
+    
+                const result = await response.json();
+                if (response.ok) {
+                    alert(result.message);
+                    window.location.href = 'confirmacion_inicio_sesion.html';
+                } else {
+                    alert(result.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Hubo un error al intentar crear la cuenta.');
+            }
+        });
+    </script>
+    
+</body>
+</html>
