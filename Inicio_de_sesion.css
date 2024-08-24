@@ -1,16 +1,106 @@
-/* estilos iniciar sesion con cuenta */
-
+/* Estilos generales para la página de inicio de sesión */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #ddc5a1;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
+/* Barra superior para seleccionar_mesa.html */
+.header {
+    background-color: #bfa893; /* Un tono más oscuro que el fondo de la página */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.header img.logo {
+    height: 60px;
+}
+
+.header .greeting {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Espacio entre el saludo, el avatar y el botón de cerrar sesión */
+}
+
+.header .greeting img.avatar {
+    height: 30px;
+    border-radius: 50%;
+}
+
+.header .greeting span {
+    margin-right: 0.5rem; /* Espacio entre el saludo y el avatar */
+}
+
+.header .logout {
+    color: #8a4b8d;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.header .logout:hover {
+    text-decoration: underline;
+}
+
+/* Contenedor de mesas */
+.tables-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 5rem; /* Espacio para la barra superior fija */
+    padding: 2rem;
+    max-width: 900px; /* Mayor ancho para más espacio para las mesas */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Ajuste de las mesas */
+.table-item {
+    background-image: url('Imagenes_para_app/mesas.png');
+    background-size: cover; /* Asegura que la imagen cubra todo el contenedor */
+    background-position: center; /* Centra la imagen en el contenedor */
+    width: 220px; /* Ajusta el tamaño de las mesas */
+    height: 120px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.table-item span {
+    display: block;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Efecto hover para las mesas */
+.table-item:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+/* Estilos para la página de inicio de sesión */
 .login-container {
     background-color: #fff;
     border-radius: 8px;
@@ -74,20 +164,25 @@ p {
 }
 
 .login-form button:hover {
-    background-color: #000000;
+    background-color: #000;
 }
 
+.forgot-password,
 .account-link {
     margin-top: 1rem;
     color: #333;
 }
 
-.account-link a {
+.forgot-password a,
+.account-link a,
+.terms a {
     color: #8a4b8d;
     text-decoration: none;
 }
 
-.account-link a:hover {
+.forgot-password a:hover,
+.account-link a:hover,
+.terms a:hover {
     text-decoration: underline;
 }
 
@@ -95,15 +190,6 @@ p {
     margin-top: 1rem;
     font-size: 0.9rem;
     color: #666;
-}
-
-.terms a {
-    color: #8a4b8d;
-    text-decoration: none;
-}
-
-.terms a:hover {
-    text-decoration: underline;
 }
 
 /* Estilos para la página de confirmación */
@@ -139,126 +225,9 @@ p {
 }
 
 .login-link:hover {
-    background-color: #000000;
+    background-color: #000;
 }
 
-
-/* Inicio_de_sesion.css */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-color: #ddc5a1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.login-container {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-}
-
-.logo-container {
-    margin-bottom: 1rem;
-}
-
-.logo {
-    max-width: 150px;
-    height: auto;
-}
-
-h1 {
-    margin: 0.5rem 0;
-    font-size: 1.8rem;
-    color: #333;
-}
-
-p {
-    margin: 0.5rem 0 1rem;
-    color: #666;
-}
-
-.login-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.login-form label {
-    font-weight: bold;
-    color: #333;
-}
-
-.login-form input {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-.login-form button {
-    background-color: #d3912f;
-    color: #fff;
-    border: none;
-    padding: 0.75rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-}
-
-.login-form button:hover {
-    background-color: #000000;
-}
-
-.forgot-password {
-    margin-top: 1rem;
-    color: #333;
-}
-
-.forgot-password a {
-    color: #8a4b8d;
-    text-decoration: none;
-}
-
-.forgot-password a:hover {
-    text-decoration: underline;
-}
-
-.account-link {
-    margin-top: 1rem;
-    color: #333;
-}
-
-.account-link a {
-    color: #8a4b8d;
-    text-decoration: none;
-}
-
-.account-link a:hover {
-    text-decoration: underline;
-}
-
-.terms {
-    margin-top: 1rem;
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.terms a {
-    color: #8a4b8d;
-    text-decoration: none;
-}
-
-.terms a:hover {
-    text-decoration: underline;
-}
 /* Estilos para los modales */
 .modal {
     display: none; /* Oculta el modal por defecto */

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Mesa</title>
+    <link rel="stylesheet" href="inicio_de_sesion.css">
+</head>
+<body>
+    <!-- Barra superior -->
+    <header class="header">
+        <img src="Logo/logososneado.png" alt="Logo" class="logo">
+        <div class="greeting" id="user-greeting">
+            <img src="Imagenes_para_app/avatar.png" alt="Avatar" class="avatar">
+            <span>Hola, [Nombre del Usuario]</span>
+        </div>
+        <a href="#" class="logout" onclick="handleLogout()">Cerrar sesión</a>
+    </header>
+
+    <!-- Contenedor de mesas -->
+    <div class="tables-container">
+        <div class="table-item"><span>1</span></div>
+        <div class="table-item"><span>2</span></div>
+        <div class="table-item"><span>3</span></div>
+        <div class="table-item"><span>4</span></div>
+        <div class="table-item"><span>5</span></div>
+        <div class="table-item"><span>6</span></div>
+        <div class="table-item"><span>7</span></div>
+        <div class="table-item"><span>8</span></div>
+        <div class="table-item"><span>9</span></div>
+        <div class="table-item"><span>10</span></div>
+    </div>
+
+    <script>
+        // Actualiza el saludo con el correo electrónico almacenado en localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const userEmail = localStorage.getItem('userEmail');
+            if (userEmail) {
+                document.querySelector('#user-greeting span').textContent = `Hola, ${userEmail}`;
+            } else {
+                document.querySelector('#user-greeting span').textContent = `Hola, Invitado`;
+            }
+        });
+
+        function handleLogout() {
+            alert('Tu sesión se cerró correctamente');
+            localStorage.removeItem('token'); // Elimina el token del localStorage
+            localStorage.removeItem('userEmail'); // Elimina el correo electrónico del localStorage
+            window.location.href = 'iniciar_con_cuenta.html'; // Redirige a la página de inicio de sesión
+        }
+    </script>
+</body>
+</html>

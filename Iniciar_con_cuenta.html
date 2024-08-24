@@ -51,7 +51,8 @@
                 if (response.ok) {
                     alert(result.message);
                     localStorage.setItem('token', result.token); // Guardar el token en localStorage
-                    window.location.href = 'index.html'; // Redirigir a la página principal o dashboard
+                    localStorage.setItem('userEmail', email); // Guardar el correo electrónico en localStorage
+                    window.location.href = 'seleccionar_mesa.html'; // Redirigir a la página de selección de mesa
                 } else {
                     alert(result.message);
                 }
@@ -61,6 +62,5 @@
             }
         });
     </script>
-    
 </body>
 </html>
