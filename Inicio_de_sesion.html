@@ -29,10 +29,99 @@
             ¿Ya tienes una cuenta? <a href="Iniciar_con_cuenta.html">Iniciar sesión</a>
         </p>
         <p class="terms">
-            By clicking continue, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+            By clicking continue, you agree to our <a href="#" id="terms-link">Terms of Service</a> and <a href="#" id="privacy-link">Privacy Policy</a>.
         </p>
     </div>
 
+    <!-- Modales para Términos de Servicio y Política de Privacidad -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="terms-close">&times;</span>
+            <h2>Términos de Servicio</h2>
+            <p>Bienvenido a Sosneado. Estos Términos de Servicio (los "Términos") regulan el uso de nuestros servicios y aplicaciones (los "Servicios"). Al acceder o utilizar nuestros Servicios, aceptas estar sujeto a estos Términos.</p>
+
+            <h3>1. Aceptación de los Términos</h3>
+            <p>Al utilizar nuestros Servicios, aceptas estos Términos y nuestra Política de Privacidad. Si no estás de acuerdo con estos Términos, no utilices nuestros Servicios.</p>
+
+            <h3>2. Uso de los Servicios</h3>
+            <p>Debes usar nuestros Servicios de manera legal y conforme a todas las leyes aplicables. No debes usar nuestros Servicios para realizar actividades ilegales, dañinas o que violen los derechos de otros.</p>
+
+            <h3>3. Modificaciones de los Términos</h3>
+            <p>Podemos actualizar estos Términos de vez en cuando. Te notificaremos sobre cualquier cambio importante. El uso continuo de nuestros Servicios después de cualquier cambio constituye tu aceptación de los nuevos Términos.</p>
+
+            <h3>4. Cancelación de Cuenta</h3>
+            <p>Nos reservamos el derecho de suspender o cancelar tu cuenta si violas estos Términos o si creamos una política para tales acciones.</p>
+
+            <h3>5. Contacto</h3>
+            <p>Para cualquier pregunta sobre estos Términos, por favor contáctanos en support@sosneado.com.</p>
+        </div>
+    </div>
+    
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="privacy-close">&times;</span>
+            <h2>Política de Privacidad</h2>
+            <p>En Sosneado, nos tomamos muy en serio la privacidad de tus datos. Esta Política de Privacidad explica cómo recopilamos, usamos y protegemos tu información.</p>
+
+            <h3>1. Información que Recopilamos</h3>
+            <p>Recopilamos información que nos proporcionas directamente, como tu nombre, correo electrónico y contraseña. También podemos recopilar información sobre tu uso de nuestros Servicios.</p>
+
+            <h3>2. Uso de la Información</h3>
+            <p>Usamos tu información para proporcionarte nuestros Servicios, mejorar tu experiencia y comunicarnos contigo. No compartimos tu información con terceros, excepto cuando sea necesario para proporcionar nuestros Servicios o cuando lo exija la ley.</p>
+
+            <h3>3. Seguridad de la Información</h3>
+            <p>Implementamos medidas de seguridad razonables para proteger tu información contra accesos no autorizados. Sin embargo, ningún sistema es completamente seguro, y no podemos garantizar la seguridad absoluta de tus datos.</p>
+
+            <h3>4. Tus Derechos</h3>
+            <p>Tienes el derecho de acceder, corregir o eliminar tu información personal que mantenemos. Para hacerlo, contáctanos en support@sosneado.com.</p>
+
+            <h3>5. Cambios en la Política</h3>
+            <p>Podemos actualizar esta Política de Privacidad de vez en cuando. Te notificaremos sobre cualquier cambio importante. El uso continuo de nuestros Servicios después de cualquier cambio constituye tu aceptación de la nueva Política.</p>
+
+            <h3>6. Contacto</h3>
+            <p>Si tienes alguna pregunta sobre nuestra Política de Privacidad, por favor contáctanos en support@sosneado.com.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript para manejar los modales -->
+    <script>
+        // Obtener elementos del modal
+        var termsModal = document.getElementById("terms-modal");
+        var privacyModal = document.getElementById("privacy-modal");
+        var termsLink = document.getElementById("terms-link");
+        var privacyLink = document.getElementById("privacy-link");
+        var termsClose = document.getElementById("terms-close");
+        var privacyClose = document.getElementById("privacy-close");
+
+        // Mostrar modales
+        termsLink.onclick = function() {
+            termsModal.style.display = "block";
+        }
+
+        privacyLink.onclick = function() {
+            privacyModal.style.display = "block";
+        }
+
+        // Cerrar modales
+        termsClose.onclick = function() {
+            termsModal.style.display = "none";
+        }
+
+        privacyClose.onclick = function() {
+            privacyModal.style.display = "none";
+        }
+
+        // Cerrar modales si el usuario hace clic fuera de ellos
+        window.onclick = function(event) {
+            if (event.target === termsModal) {
+                termsModal.style.display = "none";
+            }
+            if (event.target === privacyModal) {
+                privacyModal.style.display = "none";
+            }
+        }
+    </script>
+    
     <!-- JavaScript para validar que las contraseñas coincidan -->
     <script>
         document.getElementById('register-form').addEventListener('submit', async function(event) {
@@ -72,6 +161,5 @@
             }
         });
     </script>
-    
 </body>
 </html>
