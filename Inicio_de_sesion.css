@@ -102,6 +102,7 @@ body {
 
 /* Estilos para la página de inicio de sesión */
 .login-container {
+    margin-top: 25px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
